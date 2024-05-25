@@ -45,12 +45,7 @@ Will it terminate on its own? How do you know?
 ## Start Another Listening Worker 
 
 1. Use your listening_worker.py script to launch a second worker. 
-
-Follow the tutorial. 
-Add multiple tasks (e.g. First message, Second message, etc.)
-How are tasks distributed? 
-Monitor the windows with at least two workers. 
-Which worker gets which tasks?
+1. This will require multiple termial windows.
 
 
 ## Reference
@@ -58,6 +53,15 @@ Which worker gets which tasks?
 - [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
 
 
-## Screenshot
+## Screenshots of each version running
 
-See a running example with at least 3 concurrent process windows here:
+### Version 1 Running
+![v1 running](.V1_tasks.png)
+
+### Version 2 Running
+![v2 running](V2_tasks.png)
+
+### Version 3 Running
+![v3 running](V3_tasks.png)
+
+

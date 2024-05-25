@@ -25,10 +25,11 @@
 2024-05-24 21:41:50,986.v3_listening_worker.INFO  [x] Done.
 2024-05-24 21:41:50,988.v3_listening_worker.INFO  [x] Received 19th task...
 2024-05-24 21:41:53,990.v3_listening_worker.INFO  [x] Done.
- Done.
-2024-05-24 21:41:36,947.v3_listening_worker.INFO  [x] Received 10th task...
-2024-05-24 21:41:39,952.v3_listening_worker.INFO  [x] Done.
-2024-05-24 21:41:39,955.v3_listening_worker.INFO  [x] Received 12th task... 
+2024-05-24 21:47:57,473.v3_listening_worker.ERROR  User interrupted continuous listening process.
+2024-05-24 21:47:57,474.v3_listening_worker.ERROR 
+Closing connection. Goodbye.
+
+_worker.INFO  [x] Received 12th task... 
 2024-05-24 21:41:42,956.v3_listening_worker.INFO  [x] Done.
 2024-05-24 21:41:42,959.v3_listening_worker.INFO  [x] Received 14th task...
 2024-05-24 21:41:45,961.v3_listening_worker.INFO  [x] Done.
@@ -38,3 +39,7 @@
 2024-05-24 21:41:51,973.v3_listening_worker.INFO  [x] Done.
 2024-05-24 21:41:51,976.v3_listening_worker.INFO  [x] Received 20th task...
 2024-05-24 21:41:54,981.v3_listening_worker.INFO  [x] Done.
+2024-05-24 21:47:54,047.v3_listening_worker.ERROR  User interrupted continuous listening process.
+2024-05-24 21:47:54,048.v3_listening_worker.ERROR 
+Closing connection. Goodbye.
+
