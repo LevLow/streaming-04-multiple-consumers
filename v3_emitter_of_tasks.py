@@ -1,24 +1,33 @@
 """
 Levi Lowther 21May2024
     This program sends a message to a queue on the RabbitMQ server.
-    Make tasks harder/longer-running by adding dots at the end of the message.
+    We wil be reading the messages from a CSV
 
-    Author: Denise Case
-    Date: January 15, 2023
+    Author: Levi Lowther
+    Date: 20May2024
 
 """
-
+import csv
 import pika
 import sys
 import webbrowser
 
+#setup logger
+
+from util_logger import setup_logger
+
+logger, logname = setup_logger(__file__)
+
+# define fuctions
 def offer_rabbitmq_admin_site():
     """Offer to open the RabbitMQ Admin website"""
-    ans = input("Would you like to monitor RabbitMQ queues? y or n ")
-    print()
-    if ans.lower() == "y":
-        webbrowser.open_new("http://localhost:15672/#/queues")
+    show_offer = False
+    if show_offer:
+        ans = input("Would you like to monitor RabbitMQ queues? y or n ")
         print()
+        if ans.lower() == "y":
+            webbrowser.open_new("http://localhost:15672/#/queues")
+            print()
 
 def send_message(host: str, queue_name: str, message: str):
     """
@@ -45,13 +54,22 @@ def send_message(host: str, queue_name: str, message: str):
         # every message passes through an exchange
         ch.basic_publish(exchange="", routing_key=queue_name, body=message)
         # print a message to the console for the user
-        print(f" [x] Sent {message}")
+        logger.info(f" [x] Sent {message}")
     except pika.exceptions.AMQPConnectionError as e:
-        print(f"Error: Connection to RabbitMQ server failed: {e}")
+        logger.info(f"Error: Connection to RabbitMQ server failed: {e}")
         sys.exit(1)
     finally:
         # close the connection to the server
         conn.close()
+
+# Read tasks from csv and send to RabbitMQ server
+def read_and_send_tasks_from_csv(file_path: str, host: str, queue_name: str):
+    with open(file_path, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader: 
+            message = " ".join(row)
+            send_message(host, queue_name, message)
+
 
 # Standard Python idiom to indicate main program entry point
 # This allows us to import this module and use its functions
@@ -64,6 +82,11 @@ if __name__ == "__main__":
     # if no arguments are provided, use the default message
     # use the join method to convert the list of arguments into a string
     # join by the space character inside the quotes
-    message = " ".join(sys.argv[1:]) or "Most Secondest task......"
+    # define the name of the file 
+    file_name = 'tasks.csv'
+    #define host
+    host = 'localhost'
+    #define queue name
+    queue_name = 'task_queue3'
     # send the message to the queue
-    send_message("localhost","task_queue2",message)
+    read_and_send_tasks_from_csv(file_name, host, queue_name)
