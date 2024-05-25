@@ -56,7 +56,7 @@ Will it terminate on its own? How do you know?
 ## Screenshots of each version running
 
 ### Version 1 Running
-![v1 running](.V1_tasks.png)
+![v1 running](V1_tasks.png)
 
 ### Version 2 Running
 ![v2 running](V2_tasks.png)
